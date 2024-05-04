@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="p-3 column-gap-1 text-end">
+        <a class="btn btn-primary rounded-pill" href="advantage.html">Advantage Search</a>
+        <a class="btn btn-primary rounded-pill" href="image.html">Image Search</a>
+    </div>
+    <form class="position-absolute top-50 start-50 translate-middle" action="https://google.com/search">
+        <div style="width: 400px;">
+            <div id="searchFields">
+                <!-- Auto generated -->
+            </div>
+            <div class="p-1 row column-gap-1">
+                <input class="btn btn-primary rounded-pill col" type="submit" value="Google Search">
+            </div>
+        </div>
+    </form>
+
+    <script>
+        const searchTypes = [
+            "Find pages with all these words:",
+            "Find pages with this exact word or phrase:",
+            "Find pages with any of these words:",
+            "Find pages with none of these words:"
+        ];
+
+        const formContainer = document.getElementById("searchFields");
+
+        searchTypes.forEach((type, index) => {
+            const label = document.createElement("label");
+            label.className = "p-1";
+            label.textContent = type;
+
+            const input = document.createElement("input");
+            input.className = "p-1 text-center rounded-pill col";
+            input.type = "text";
+            input.id = `as_${index}`;
+            input.name = `as_${index}`;
+
+            const row = document.createElement("div");
+            row.className = "p-1 row";
+            row.appendChild(label);
+            row.appendChild(input);
+
+            formContainer.appendChild(row);
+        });
+    </script>
+</body>
+</html>
