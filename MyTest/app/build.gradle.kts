@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -30,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -76,6 +78,12 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
+    // Dagger-Hilt dependency injection
+    implementation("com.google.dagger:hilt-android:2.50")
+    kapt("com.google.dagger:hilt-android-compiler:2.50")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
 
     //permission handling in compose
     implementation("com.google.accompanist:accompanist-permissions:0.33.2-alpha")
@@ -88,4 +96,9 @@ dependencies {
     implementation("com.google.android.gms:play-services-vision:20.1.3")
     implementation("com.google.firebase:firebase-ml-vision:24.1.0")
     implementation("com.google.cloud:google-cloud-document-ai:2.42.0")
+
+    //coil image loading library
+    implementation("io.coil-kt:coil-compose:2.4.0")
+//    Image Cropper settings.gradle.kts maven(url = "https://jitpack.io")
+    implementation("com.github.CanHub:Android-Image-Cropper:4.0.0")
 }
