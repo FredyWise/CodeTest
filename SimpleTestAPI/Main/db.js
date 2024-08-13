@@ -5,14 +5,14 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'testing',
     password: 'testing',
-    database: 'testapi'
+    database: 'BootcampBeriJalan'
 });
 
 
 async function getAllProducts() {
     const connection = await pool.getConnection();
     try {
-        const [results] = await connection.query('SELECT * FROM car_brand');
+        const [results] = await connection.query('SELECT * FROM buah');
         return results;
     } catch (error) {
         console.error('Error executing query:', error);
@@ -25,7 +25,7 @@ async function getAllProducts() {
 async function getProductById(productId) {
     const connection = await pool.getConnection();
     try {
-        const [result] = await connection.query('SELECT * FROM car_brand WHERE cd_brand = ?', [productId]);
+        const [result] = await connection.query('SELECT * FROM buah WHERE id = ?', [productId]);
         return result;
     } catch (error) {
         console.error('Error executing query:', error);
@@ -38,7 +38,7 @@ async function getProductById(productId) {
 async function addProduct(product) {
     const connection = await pool.getConnection();
     try {
-        const [result] = await connection.query('INSERT INTO car_brand SET ?', product);
+        const [result] = await connection.query('INSERT INTO buah SET ?', product);
         return result.insertId;
     } catch (error) {
         console.error('Error executing query:', error);
@@ -51,7 +51,7 @@ async function addProduct(product) {
 async function updateProduct(productId, updatedProduct) {
     const connection = await pool.getConnection();
     try {
-        const [result] = await connection.query('UPDATE car_brand SET ? WHERE cd_brand = ?', [updatedProduct, productId]);
+        const [result] = await connection.query('UPDATE buah SET ? WHERE id = ?', [updatedProduct, productId]);
         return result.affectedRows;
     } catch (error) {
         console.error('Error executing query:', error);
@@ -64,7 +64,7 @@ async function updateProduct(productId, updatedProduct) {
 async function deleteProduct(productId) {
     const connection = await pool.getConnection();
     try {
-        const [result] = await connection.query('DELETE FROM car_brand WHERE cd_brand = ?', [productId]);
+        const [result] = await connection.query('DELETE FROM buah WHERE id = ?', [productId]);
         return result.affectedRows;
     } catch (error) {
         console.error('Error executing query:', error);
@@ -77,7 +77,7 @@ async function deleteProduct(productId) {
 async function searchProduct(query) {
     const connection = await pool.getConnection();
     try {
-        const [result] = await connection.query('SELECT * FROM car_brand WHERE desc_brand LIKE ?', ['%' + query + '%']);
+        const [result] = await connection.query('SELECT * FROM buah WHERE name LIKE ?', ['%' + query + '%']);
         return result;
     } catch (error) {
         console.error('Error executing query:', error);

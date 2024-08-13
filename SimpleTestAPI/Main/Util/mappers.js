@@ -4,9 +4,18 @@ function toResponse(products) {
         OUT_STAT: "T",
         OUT_MESS: "Success",
         OUT_DATA: products.map(product => ({
-            CD_BRAND: product.CD_BRAND,
-            DESC_BRAND: product.DESC_BRAND
+            id: product.id,
+            name: product.name,
+            price: product.price
         }))
+    }
+}
+
+function toSuccessResponse(message) {
+    return {
+        OUT_STAT: "T",
+        OUT_MESS: message,
+        OUT_DATA: []
     }
 }
 
@@ -21,4 +30,5 @@ function toErrorResponse(message){
 module.exports = {
     toResponse,
     toErrorResponse,
+    toSuccessResponse,
 }
