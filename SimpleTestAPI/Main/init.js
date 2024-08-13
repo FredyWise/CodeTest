@@ -149,10 +149,10 @@ app.post('/api/Search', async (req, res) => {
     }
     console.log(req.body);
     const searchTerm = req.body.searchTerm;
-    if (searchTerm.length > 10) {
-        const errorResponse = toErrorResponse('Search term too long');
-        return res.status(400).json(errorResponse);
-    }
+    // if (searchTerm.length > 10) {
+    //     const errorResponse = toErrorResponse('Search term too long');
+    //     return res.status(400).json(errorResponse);
+    // }
     const specialCharPattern = /[^a-zA-Z0-9 ]/;
     if (specialCharPattern.test(searchTerm)) {
         const errorResponse = toErrorResponse('Invalid input');
