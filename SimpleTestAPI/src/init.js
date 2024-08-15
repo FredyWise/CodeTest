@@ -6,18 +6,18 @@ const {
     updateProduct,
     deleteProduct,
     searchProduct
-} = require('../Main/db');
+} = require('./db');
 const {
     toResponse,
     toErrorResponse,
     toSuccessResponse
-} = require('../Main/Util/mappers');
+} = require('./Util/mappers');
 
 const apiKey = "7def4ec4deab71e2c5911ee718db181c8bf077582e9cc397af95c76fb0d459f0"
 const app = express();
 app.use(express.json());
 
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 
 function checkHeaders(req, res, next) {
     console.log('Headers:', req.headers);
