@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-FreshfruitApplication<freshfruit>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.fredywise.freshfruit.FreshfruitApplication",
+            "projectName": "freshfruit",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
