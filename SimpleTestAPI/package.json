@@ -1,6 +1,18 @@
 {
   "dependencies": {
     "express": "^4.19.2",
-    "mysql2": "^3.11.0"
-  }
+    "mysql2": "^3.11.0",
+    "simpletestapi": "file:"
+  },
+  "name": "simpletestapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./src/init.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

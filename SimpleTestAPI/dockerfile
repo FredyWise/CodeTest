@@ -1,4 +1,14 @@
+# FROM mysql:latest
+
+# ENV MYSQL_ROOT_PASSWORD=root
+
+# COPY ./init.sql /docker-entrypoint-initdb.d/
+
 FROM node:20-alpine3.19
+
+ADD ./scripts/init.sql /docker-entrypoint-initdb.d/
+
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 WORKDIR /app
 
@@ -12,4 +22,5 @@ ENV PORT=8081
 
 EXPOSE 8081
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "dev" ]
+

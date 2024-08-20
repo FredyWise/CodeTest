@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  api:
+    image: testing/simpletestapi:0.0.1
+    build: .
+    ports:
+      - "8081:8081"
+    depends_on:
+      - testing_sql
+  testing_sql:
+    image: mysql:8.0
+    # command: --default-authentication-plugin=mysql_native_password
+    # restart: always
+    ports:
+      - "8083:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: testing
+      MYSQL_PASSWORD: testing
+      MYSQL_DATABASE: BootcampBeriJalan
+    volumes:
+    - ./scripts:/docker-entrypoint-initdb.d
+      
+
+
