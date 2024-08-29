@@ -21,7 +21,7 @@
         <div class="container-md mx-sm-1 mx-md-5 mt-3">
           <div class="row color-primary py-3 rounded">
             <div class="col-md-8">
-              <h2 th:text="${buah.id != 0} ? 'Update Buah' : 'Add Fruit'"></h2>
+              <h2 th:text="${buah.id != 0} ? 'Update Fruit' : 'Add Fruit'"></h2>
               <form
                 th:action="@{/freshfruit/upsert/{id}(id=${buah.id })}"
                 method="post"
