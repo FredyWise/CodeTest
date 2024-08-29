@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <div th:replace="~{/mainFragment :: mainHead('Fresh Fruit','tag')}"></div>
+    <link rel="stylesheet" type="text/css" href="/css/util/popUp.css" />
+  </head>
+  <body>
+    <div th:replace="~{/mainFragment :: sidebar}"></div>
+
+    <div class="topbar">
+      <div>
+        <button class="btn btn-link text-white" id="burgerBtn">
+          <span class="material-icons">menu</span>
+        </button>
+        <span>FreshFruit</span>
+      </div>
+      <div class="d-flex align-items-center">
+        <input
+          type="text"
+          class="form-control"
+          id="searchInput"
+          placeholder="Search..."
+          name="searchTerm"
+        />
+        <button class="btn btn-success ms-2" id="searchBtn">Search</button>
+      </div>
+    </div>
+
+    <div class="main-content" id="mainContent">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row color-primary py-3 rounded">
+            <table class="table table-bordered">
+              <thead class="bg-primary text-white">
+                <tr>
+                  <th class="text-center">No.</th>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Price</th>
+                  <th class="text-center">Command</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="buah, iterStat : ${listBuah}">
+                  <td class="text-center align-middle">
+                    <span th:text="${iterStat.count}">1</span>
+                  </td>
+                  <td class="align-middle">
+                    <span class="fw-bold fs-6" th:text="${buah.name}"
+                      >Name</span
+                    >
+                  </td>
+                  <td class="text-center align-middle">
+                    <span th:text="${buah.price}">Price</span>
+                  </td>
+                  <td class="text-center align-middle">
+                    <a
+                      onclick="showConfirmationPopup('delete this item', $(this).attr('href')); return false;"
+                      th:href="@{/freshfruit/table/{id}(id=${buah.id})}"
+                      class="btn btn-danger col-md-6 col-sm-12"
+                      >Soft Delete</a
+                    >
+                    <a
+                      class="btn btn-success col-md-6 col-sm-12"
+                      th:href="@{/freshfruit/upsert/{id}(id=${buah.id})}"
+                      >Update</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="~{/mainFragment :: script}"></div>
+    <script src="/js/popUp.js"></script>
+  </body>
+</html>
